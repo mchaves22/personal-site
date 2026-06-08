@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Miguela Chaves — Entrepreneur turned product manager. SaaS, ecommerce, adtech.">
+    <title>Miguela Chaves</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fdfaf6;
+            --text: #2d2420;
+            --muted: #8c7b6e;
+            --border: #e8dfd5;
+            --card: #ffffff;
+            --highlight: #f7f2eb;
+            --warm: #c4843e;
+            --green: #5b7b5e;
+        }
+        [data-theme="dark"] {
+            --bg: #1a1613;
+            --text: #efe8df;
+            --muted: #9b8e80;
+            --border: #3d342c;
+            --card: #24201c;
+            --highlight: #2d2823;
+            --warm: #d4954f;
+            --green: #7a9c7d;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            transition: background 0.3s, color 0.3s;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, .serif { font-family: "Crimson Text", Georgia, serif; }
+
+        .container { max-width: 640px; margin: 0 auto; padding: 0 24px; }
+
+        .theme-toggle {
+            position: fixed; top: 24px; right: 24px;
+            width: 40px; height: 40px; border-radius: 50%;
+            border: 1px solid var(--border); background: var(--card);
+            cursor: pointer; font-size: 18px;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s; z-index: 10;
+        }
+        .theme-toggle:hover { border-color: var(--warm); }
+
+        header {
+            padding: 80px 0 56px;
+            text-align: center;
+        }
+        .polaroid {
+            display: inline-block;
+            width: 160px; height: 192px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 8px 8px 36px 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transform: rotate(-2deg);
+            transition: transform 0.3s;
+            margin-bottom: 28px;
+        }
+        .polaroid:hover { transform: rotate(0deg) scale(1.03); }
+        .polaroid .photo {
+            width: 100%; height: 100%;
+            background: var(--highlight);
+            border-radius: 2px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 48px; color: var(--muted);
+        }
+        header h1 {
+            font-size: 56px; font-weight: 400;
+            letter-spacing: -0.5px; margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        header .tagline {
+            font-size: 22px; color: var(--text);
+            line-height: 1.5; max-width: 520px;
+            margin: 0 auto 16px;
+        }
+        header .personal {
+            font-size: 16px; color: var(--muted);
+            font-style: italic; margin-bottom: 20px;
+        }
+        header .industries {
+            font-size: 14px; color: var(--muted);
+            letter-spacing: 0.5px;
+        }
+        .weather-bar {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin-top: 20px; font-size: 14px;
+            color: var(--muted);
+        }
+        .weather-bar .temp { font-size: 22px; font-family: "Crimson Text", serif; color: var(--warm); }
+        .weather-bar .desc { font-style: italic; }
+
+        section { padding: 48px 0; border-top: 1px solid var(--border); }
+        .section-label {
+            font-family: "Crimson Text", Georgia, serif;
+            font-size: 24px; font-weight: 400;
+            color: var(--text); margin-bottom: 20px;
+        }
+        section p {
+            font-size: 16px; margin-bottom: 16px;
+            line-height: 1.7; color: var(--text);
+        }
+        section p:last-child { margin-bottom: 0; }
+
+        .grid-3 {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .card {
+            padding: 20px 18px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--card);
+        }
+        .card .num {
+            font-family: "Crimson Text", serif;
+            font-size: 28px; color: var(--warm); margin-bottom: 6px;
+            line-height: 1;
+        }
+        .card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+        .card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 0; }
+
+        .skills { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill {
+            padding: 6px 14px; border-radius: 20px;
+            border: 1px solid var(--border);
+            font-size: 13px; color: var(--text);
+            background: var(--card);
+        }
+
+        .contact-links { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+        .contact-links a {
+            color: var(--text); text-decoration: none;
+            font-size: 15px; font-weight: 500;
+            border-bottom: 1.5px solid var(--border);
+            padding-bottom: 3px; transition: border-color 0.2s;
+        }
+        .contact-links a:hover { border-color: var(--warm); }
+
+        footer {
+            padding: 40px 0 80px; text-align: center;
+            font-size: 13px; color: var(--muted);
+        }
+
+        .chat-btn {
+            position: fixed; right: 24px; bottom: 32px;
+            padding: 12px 24px;
+            border: 1.5px solid var(--warm);
+            border-radius: 28px;
+            color: var(--warm);
+            font-size: 15px; font-weight: 600;
+            text-decoration: none;
+            background: var(--bg);
+            transition: all 0.2s;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            backdrop-filter: blur(8px);
+        }
+        .chat-btn:hover { background: var(--warm); color: #fff; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,0.1); }
+
+        @media (max-width: 520px) {
+            header { padding: 48px 0 40px; }
+            header h1 { font-size: 38px; }
+            header .tagline { font-size: 18px; }
+            .polaroid { width: 130px; height: 156px; padding: 6px 6px 30px 6px; }
+            section { padding: 36px 0; }
+            .grid-3 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">&#9728;</button>
+
+    <div class="container">
+        <header>
+            <div class="polaroid">
+                <div class="photo">&#128247;</div>
+            </div>
+            <h1>Hi, I'm Miguela</h1>
+            <p class="tagline">
+                Entrepreneur turned product manager.
+                I help teams turn good ideas into great products.
+            </p>
+            <p class="personal">
+                Based in Denver, Colorado — chasing two border collies through the Rockies
+                and taking advantage of 300+ days of sunshine.
+            </p>
+            <p class="industries">
+                SaaS &middot; Ecommerce &middot; Adtech
+            </p>
+            <div class="weather-bar">
+                <span class="temp" id="weather-temp">--°</span>
+                <span class="desc" id="weather-desc">loading...</span>
+                <span style="color: var(--muted);">· Denver, CO</span>
+            </div>
+        </header>
+
+        <section>
+            <h2 class="section-label">What I bring</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="num">01</div>
+                    <h3>Builder's instinct</h3>
+                    <p>Founded and ran a business from the ground up. I know the difference between a good idea and one that actually works in the real world.</p>
+                </div>
+                <div class="card">
+                    <div class="num">02</div>
+                    <h3>People-first</h3>
+                    <p>Spent years solving problems face-to-face. Every product decision starts with understanding the person on the other side of it.</p>
+                </div>
+                <div class="card">
+                    <div class="num">03</div>
+                    <h3>Forward-looking</h3>
+                    <p>I build with an eye on what's next — not chasing trends, but using modern tools to solve problems in smarter ways.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-label">How I work</h2>
+            <p>
+                I've spent my career at the intersection of people, products, and technology — 
+                across SaaS platforms, ecommerce experiences, and adtech. I'm at my best 
+                when I'm close to the problem and close to the people solving it. I like 
+                small, quick iterations over long planning cycles. I'd rather show you 
+                something real today than promise something perfect next month.
+            </p>
+            <p>
+                I believe clarity is a gift you give your team. If we can't say what 
+                we're doing and why in a sentence, we're not ready to start. And I 
+                believe the best products come from teams that trust each other 
+                enough to be honest about what's working and what isn't.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="section-label">What I can help with</h2>
+            <div class="skills">
+                <span class="skill">Product strategy</span>
+                <span class="skill">User research</span>
+                <span class="skill">Roadmapping</span>
+                <span class="skill">Prioritization</span>
+                <span class="skill">Go-to-market</span>
+                <span class="skill">Wireframing</span>
+                <span class="skill">Prototyping</span>
+                <span class="skill">Agile &amp; lean</span>
+                <span class="skill">Cross-functional teams</span>
+                <span class="skill">Stakeholder alignment</span>
+                <span class="skill">Data &amp; analytics</span>
+                <span class="skill">Technical communication</span>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-label">Say hello</h2>
+            <div class="contact-links">
+                <a href="mailto:miguela2286@gmail.com">Email</a>
+                <a href="https://github.com/mchaves22" target="_blank" rel="noopener">GitHub</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </section>
+    </div>
+
+    <a href="https://t.me/MiguelaChaves" class="chat-btn" target="_blank" rel="noopener">Let's chat</a>
+
+    <footer>
+        &copy; 2026 Miguela Chaves
+    </footer>
+
+    <script>
+        const weatherCodes = {
+            0: 'Clear sky', 1: 'Mostly clear', 2: 'Partly cloudy', 3: 'Overcast',
+            45: 'Fog', 48: 'Fog', 51: 'Light drizzle', 53: 'Drizzle', 55: 'Heavy drizzle',
+            61: 'Light rain', 63: 'Rain', 65: 'Heavy rain', 71: 'Light snow', 73: 'Snow',
+            75: 'Heavy snow', 77: 'Snow grains', 80: 'Light showers', 81: 'Showers',
+            82: 'Heavy showers', 85: 'Light snow showers', 86: 'Heavy snow showers',
+            95: 'Thunderstorm', 96: 'Hail storm', 99: 'Severe hail'
+        };
+        const weatherIcons = {
+            0: '☀️', 1: '🌤️', 2: '⛅', 3: '☁️', 45: '🌫️', 48: '🌫️',
+            51: '🌦️', 53: '🌦️', 55: '🌧️', 61: '🌧️', 63: '🌧️', 65: '🌧️',
+            71: '🌨️', 73: '🌨️', 75: '🌨️', 77: '🌨️', 80: '🌦️', 81: '🌦️',
+            82: '🌧️', 85: '🌨️', 86: '🌨️', 95: '⛈️', 96: '⛈️', 99: '⛈️'
+        };
+        async function fetchWeather() {
+            try {
+                const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=39.7392&longitude=-104.9903&current=temperature_2m,weather_code&temperature_unit=fahrenheit');
+                const d = await r.json();
+                const temp = Math.round(d.current.temperature_2m);
+                const code = d.current.weather_code;
+                const icon = weatherIcons[code] || '🌡️';
+                const desc = weatherCodes[code] || '';
+                document.getElementById('weather-temp').textContent = icon + ' ' + temp + '°';
+                document.getElementById('weather-desc').textContent = desc;
+            } catch(e) {
+                document.getElementById('weather-temp').textContent = '☀️';
+                document.getElementById('weather-desc').textContent = '300+ sunny days a year';
+            }
+        }
+        fetchWeather();
+
+        const toggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+        function toggleTheme() {
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                html.removeAttribute('data-theme');
+                toggle.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                toggle.innerHTML = '&#9790;';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        if (localStorage.getItem('theme') === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+            toggle.innerHTML = '&#9790;';
+        }
+    </script>
+</body>
+</html>
