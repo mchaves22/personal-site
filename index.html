@@ -40,7 +40,6 @@
             -webkit-font-smoothing: antialiased;
         }
         h1, h2, h3, .serif { font-family: "Crimson Text", Georgia, serif; }
-
         .container { max-width: 640px; margin: 0 auto; padding: 0 24px; }
 
         .theme-toggle {
@@ -53,10 +52,7 @@
         }
         .theme-toggle:hover { border-color: var(--warm); }
 
-        header {
-            padding: 80px 0 56px;
-            text-align: center;
-        }
+        header { padding: 80px 0 56px; text-align: center; }
         .polaroid {
             display: inline-block;
             width: 160px; height: 192px;
@@ -77,99 +73,119 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 48px; color: var(--muted);
         }
-        header h1 {
-            font-size: 56px; font-weight: 400;
-            letter-spacing: -0.5px; margin-bottom: 20px;
-            line-height: 1.1;
-        }
-        header .tagline {
-            font-size: 22px; color: var(--text);
-            line-height: 1.5; max-width: 520px;
-            margin: 0 auto 16px;
-        }
-        header .personal {
-            font-size: 16px; color: var(--muted);
-            font-style: italic; margin-bottom: 20px;
-        }
-        header .industries {
-            font-size: 14px; color: var(--muted);
-            letter-spacing: 0.5px;
-        }
+        header h1 { font-size: 56px; font-weight: 400; letter-spacing: -0.5px; margin-bottom: 20px; line-height: 1.1; }
+        header .tagline { font-size: 22px; color: var(--text); line-height: 1.5; max-width: 520px; margin: 0 auto 16px; }
+        header .personal { font-size: 16px; color: var(--muted); font-style: italic; margin-bottom: 20px; }
+        header .industries { font-size: 14px; color: var(--muted); letter-spacing: 0.5px; }
         .weather-bar {
             display: flex; align-items: center; justify-content: center; gap: 10px;
-            margin-top: 20px; font-size: 14px;
-            color: var(--muted);
+            margin-top: 20px; font-size: 14px; color: var(--muted);
         }
         .weather-bar .temp { font-size: 22px; font-family: "Crimson Text", serif; color: var(--warm); }
         .weather-bar .desc { font-style: italic; }
 
         section { padding: 48px 0; border-top: 1px solid var(--border); }
-        .section-label {
-            font-family: "Crimson Text", Georgia, serif;
-            font-size: 24px; font-weight: 400;
-            color: var(--text); margin-bottom: 20px;
-        }
-        section p {
-            font-size: 16px; margin-bottom: 16px;
-            line-height: 1.7; color: var(--text);
-        }
+        .section-label { font-family: "Crimson Text", Georgia, serif; font-size: 24px; font-weight: 400; color: var(--text); margin-bottom: 20px; }
+        section p { font-size: 16px; margin-bottom: 16px; line-height: 1.7; color: var(--text); }
         section p:last-child { margin-bottom: 0; }
 
-        .grid-3 {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-        .card {
-            padding: 20px 18px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: var(--card);
-        }
-        .card .num {
-            font-family: "Crimson Text", serif;
-            font-size: 28px; color: var(--warm); margin-bottom: 6px;
-            line-height: 1;
-        }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .card { padding: 20px 18px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); }
+        .card .num { font-family: "Crimson Text", serif; font-size: 28px; color: var(--warm); margin-bottom: 6px; line-height: 1; }
         .card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
         .card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 0; }
 
         .skills { display: flex; flex-wrap: wrap; gap: 8px; }
-        .skill {
-            padding: 6px 14px; border-radius: 20px;
-            border: 1px solid var(--border);
-            font-size: 13px; color: var(--text);
-            background: var(--card);
-        }
+        .skill { padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); font-size: 13px; color: var(--text); background: var(--card); }
 
         .contact-links { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
-        .contact-links a {
-            color: var(--text); text-decoration: none;
-            font-size: 15px; font-weight: 500;
-            border-bottom: 1.5px solid var(--border);
-            padding-bottom: 3px; transition: border-color 0.2s;
-        }
+        .contact-links a { color: var(--text); text-decoration: none; font-size: 15px; font-weight: 500; border-bottom: 1.5px solid var(--border); padding-bottom: 3px; transition: border-color 0.2s; }
         .contact-links a:hover { border-color: var(--warm); }
 
-        footer {
-            padding: 40px 0 80px; text-align: center;
-            font-size: 13px; color: var(--muted);
-        }
+        footer { padding: 40px 0 80px; text-align: center; font-size: 13px; color: var(--muted); }
 
-        .chat-btn {
-            position: fixed; right: 24px; bottom: 32px;
-            padding: 12px 24px;
-            border: 1.5px solid var(--warm);
-            border-radius: 28px;
-            color: var(--warm);
-            font-size: 15px; font-weight: 600;
-            text-decoration: none;
-            background: var(--bg);
-            transition: all 0.2s;
-            z-index: 10;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            backdrop-filter: blur(8px);
+        /* Chat widget */
+        .chat-widget { position: fixed; right: 24px; bottom: 24px; z-index: 100; font-family: "Inter", sans-serif; }
+        .chat-bubble {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: var(--warm); color: #fff;
+            border: none; cursor: pointer;
+            font-size: 24px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .chat-btn:hover { background: var(--warm); color: #fff; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,0.1); }
+        .chat-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+        .chat-panel {
+            display: none;
+            position: absolute; right: 0; bottom: 68px;
+            width: 340px; max-height: 440px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            overflow: hidden;
+            flex-direction: column;
+        }
+        .chat-panel.open { display: flex; }
+        .chat-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; gap: 12px;
+        }
+        .chat-avatar {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--highlight);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+        }
+        .chat-header-text h4 { font-size: 15px; font-weight: 600; }
+        .chat-header-text p { font-size: 12px; color: var(--muted); margin: 0; }
+        .chat-body {
+            padding: 16px 20px;
+            flex: 1;
+            display: flex; flex-direction: column; gap: 12px;
+        }
+        .chat-msg {
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 14px;
+            line-height: 1.5;
+            max-width: 85%;
+        }
+        .chat-msg.them {
+            background: var(--highlight);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        .chat-input-area {
+            padding: 12px 16px;
+            border-top: 1px solid var(--border);
+            display: flex; gap: 8px;
+        }
+        .chat-input-area input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 14px;
+            font-family: "Inter", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            outline: none;
+        }
+        .chat-input-area input:focus { border-color: var(--warm); }
+        .chat-input-area button {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: var(--warm); color: #fff;
+            border: none; cursor: pointer;
+            font-size: 18px;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+        }
+        .chat-input-area button:hover { opacity: 0.9; }
 
         @media (max-width: 520px) {
             header { padding: 48px 0 40px; }
@@ -178,6 +194,7 @@
             .polaroid { width: 130px; height: 156px; padding: 6px 6px 30px 6px; }
             section { padding: 36px 0; }
             .grid-3 { grid-template-columns: 1fr; }
+            .chat-panel { width: calc(100vw - 48px); right: 0; }
         }
     </style>
 </head>
@@ -186,21 +203,11 @@
 
     <div class="container">
         <header>
-            <div class="polaroid">
-                <div class="photo">&#128247;</div>
-            </div>
+            <div class="polaroid"><div class="photo">&#128247;</div></div>
             <h1>Hi, I'm Miguela</h1>
-            <p class="tagline">
-                Entrepreneur turned product manager.
-                I help teams turn good ideas into great products.
-            </p>
-            <p class="personal">
-                Based in Denver, Colorado — chasing two border collies through the Rockies
-                and taking advantage of 300+ days of sunshine.
-            </p>
-            <p class="industries">
-                SaaS &middot; Ecommerce &middot; Adtech
-            </p>
+            <p class="tagline">Entrepreneur turned product manager. I help teams turn good ideas into great products.</p>
+            <p class="personal">Based in Denver, Colorado — chasing two border collies through the Rockies and taking advantage of 300+ days of sunshine.</p>
+            <p class="industries">SaaS &middot; Ecommerce &middot; Adtech</p>
             <div class="weather-bar">
                 <span class="temp" id="weather-temp">--°</span>
                 <span class="desc" id="weather-desc">loading...</span>
@@ -211,56 +218,25 @@
         <section>
             <h2 class="section-label">What I bring</h2>
             <div class="grid-3">
-                <div class="card">
-                    <div class="num">01</div>
-                    <h3>Builder's instinct</h3>
-                    <p>Founded and ran a business from the ground up. I know the difference between a good idea and one that actually works in the real world.</p>
-                </div>
-                <div class="card">
-                    <div class="num">02</div>
-                    <h3>People-first</h3>
-                    <p>Spent years solving problems face-to-face. Every product decision starts with understanding the person on the other side of it.</p>
-                </div>
-                <div class="card">
-                    <div class="num">03</div>
-                    <h3>Forward-looking</h3>
-                    <p>I build with an eye on what's next — not chasing trends, but using modern tools to solve problems in smarter ways.</p>
-                </div>
+                <div class="card"><div class="num">01</div><h3>Builder's instinct</h3><p>Founded and ran a business from the ground up. I know the difference between a good idea and one that actually works.</p></div>
+                <div class="card"><div class="num">02</div><h3>People-first</h3><p>Spent years solving problems face-to-face. Every product decision starts with the person on the other side.</p></div>
+                <div class="card"><div class="num">03</div><h3>Forward-looking</h3><p>I build with an eye on what's next — not chasing trends, but using modern tools to solve problems smarter.</p></div>
             </div>
         </section>
 
         <section>
             <h2 class="section-label">How I work</h2>
-            <p>
-                I've spent my career at the intersection of people, products, and technology — 
-                across SaaS platforms, ecommerce experiences, and adtech. I'm at my best 
-                when I'm close to the problem and close to the people solving it. I like 
-                small, quick iterations over long planning cycles. I'd rather show you 
-                something real today than promise something perfect next month.
-            </p>
-            <p>
-                I believe clarity is a gift you give your team. If we can't say what 
-                we're doing and why in a sentence, we're not ready to start. And I 
-                believe the best products come from teams that trust each other 
-                enough to be honest about what's working and what isn't.
-            </p>
+            <p>I've spent my career at the intersection of people, products, and technology — across SaaS platforms, ecommerce, and adtech. I'm at my best when I'm close to the problem and the people solving it. I like small, quick iterations. I'd rather show you something real today than promise something perfect next month.</p>
+            <p>I believe clarity is a gift you give your team. If we can't say what we're doing and why in a sentence, we're not ready to start. And I believe the best products come from teams that trust each other enough to be honest about what's working and what isn't.</p>
         </section>
 
         <section>
             <h2 class="section-label">What I can help with</h2>
             <div class="skills">
-                <span class="skill">Product strategy</span>
-                <span class="skill">User research</span>
-                <span class="skill">Roadmapping</span>
-                <span class="skill">Prioritization</span>
-                <span class="skill">Go-to-market</span>
-                <span class="skill">Wireframing</span>
-                <span class="skill">Prototyping</span>
-                <span class="skill">Agile &amp; lean</span>
-                <span class="skill">Cross-functional teams</span>
-                <span class="skill">Stakeholder alignment</span>
-                <span class="skill">Data &amp; analytics</span>
-                <span class="skill">Technical communication</span>
+                <span class="skill">Product strategy</span><span class="skill">User research</span><span class="skill">Roadmapping</span>
+                <span class="skill">Prioritization</span><span class="skill">Go-to-market</span><span class="skill">Wireframing</span>
+                <span class="skill">Prototyping</span><span class="skill">Agile &amp; lean</span><span class="skill">Cross-functional teams</span>
+                <span class="skill">Stakeholder alignment</span><span class="skill">Data &amp; analytics</span><span class="skill">Technical communication</span>
             </div>
         </section>
 
@@ -274,11 +250,28 @@
         </section>
     </div>
 
-    <a href="https://t.me/MiguelaChaves" class="chat-btn" target="_blank" rel="noopener">Let's chat</a>
+    <!-- Chat widget -->
+    <div class="chat-widget">
+        <button class="chat-bubble" onclick="toggleChat()" aria-label="Open chat">💬</button>
+        <div class="chat-panel" id="chatPanel">
+            <div class="chat-header">
+                <div class="chat-avatar">👋</div>
+                <div class="chat-header-text">
+                    <h4>Chat with Miguela</h4>
+                    <p>Replies on Telegram</p>
+                </div>
+            </div>
+            <div class="chat-body">
+                <div class="chat-msg them">Hey! Drop me a message and I'll get back to you on Telegram 👋</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter')sendMsg()">
+                <button onclick="sendMsg()">➤</button>
+            </div>
+        </div>
+    </div>
 
-    <footer>
-        &copy; 2026 Miguela Chaves
-    </footer>
+    <footer>&copy; 2026 Miguela Chaves</footer>
 
     <script>
         const weatherCodes = {
@@ -301,10 +294,8 @@
                 const d = await r.json();
                 const temp = Math.round(d.current.temperature_2m);
                 const code = d.current.weather_code;
-                const icon = weatherIcons[code] || '🌡️';
-                const desc = weatherCodes[code] || '';
-                document.getElementById('weather-temp').textContent = icon + ' ' + temp + '°';
-                document.getElementById('weather-desc').textContent = desc;
+                document.getElementById('weather-temp').textContent = (weatherIcons[code] || '🌡️') + ' ' + temp + '°';
+                document.getElementById('weather-desc').textContent = weatherCodes[code] || '';
             } catch(e) {
                 document.getElementById('weather-temp').textContent = '☀️';
                 document.getElementById('weather-desc').textContent = '300+ sunny days a year';
@@ -312,23 +303,51 @@
         }
         fetchWeather();
 
-        const toggle = document.querySelector('.theme-toggle');
-        const html = document.documentElement;
         function toggleTheme() {
-            const isDark = html.getAttribute('data-theme') === 'dark';
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             if (isDark) {
-                html.removeAttribute('data-theme');
-                toggle.innerHTML = '&#9728;';
+                document.documentElement.removeAttribute('data-theme');
+                document.querySelector('.theme-toggle').innerHTML = '&#9728;';
                 localStorage.setItem('theme', 'light');
             } else {
-                html.setAttribute('data-theme', 'dark');
-                toggle.innerHTML = '&#9790;';
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.querySelector('.theme-toggle').innerHTML = '&#9790;';
                 localStorage.setItem('theme', 'dark');
             }
         }
         if (localStorage.getItem('theme') === 'dark') {
-            html.setAttribute('data-theme', 'dark');
-            toggle.innerHTML = '&#9790;';
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.querySelector('.theme-toggle').innerHTML = '&#9790;';
+        }
+
+        // Chat widget
+        function toggleChat() {
+            document.getElementById('chatPanel').classList.toggle('open');
+            if (document.getElementById('chatPanel').classList.contains('open')) {
+                document.getElementById('chatInput').focus();
+            }
+        }
+        function sendMsg() {
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim();
+            if (!msg) return;
+            const body = document.querySelector('.chat-body');
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-msg';
+            userMsg.style.cssText = 'background:var(--warm);color:#fff;align-self:flex-end;border-bottom-right-radius:4px;';
+            userMsg.textContent = msg;
+            body.appendChild(userMsg);
+            const themMsg = document.createElement('div');
+            themMsg.className = 'chat-msg them';
+            themMsg.textContent = 'Opening Telegram...';
+            body.appendChild(themMsg);
+            body.scrollTop = body.scrollHeight;
+            input.value = '';
+            const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+            const url = isMobile
+                ? 'tg://resolve?domain=MiguelaChaves&text=' + encodeURIComponent(msg)
+                : 'https://t.me/MiguelaChaves?text=' + encodeURIComponent(msg);
+            setTimeout(() => { window.open(url, '_blank'); }, 600);
         }
     </script>
 </body>
