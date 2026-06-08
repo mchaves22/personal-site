@@ -367,7 +367,7 @@
                 document.getElementById('typingIndicator')?.remove();
                 const errMsg = document.createElement('div');
                 errMsg.className = 'chat-msg them';
-                errMsg.textContent = 'Having trouble connecting. Try Telegram: t.me/MiguelaChaves';
+                errMsg.innerHTML = 'I\'m not online right now. <a href="https://t.me/MiguelaChaves?text=' + encodeURIComponent(msg) + '" target="_blank" style="color:var(--warm);">Message me on Telegram →</a>';
                 body.appendChild(errMsg);
             }
             input.disabled = false;
