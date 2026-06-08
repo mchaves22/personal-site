@@ -258,7 +258,7 @@
                 <div class="chat-avatar">👋</div>
                 <div class="chat-header-text">
                     <h4>Chat with Miguela</h4>
-                    <p>Replies on Telegram</p>
+                    <p>Live chat — replies in real time</p>
                 </div>
             </div>
             <div class="chat-body">
@@ -321,33 +321,58 @@
         }
 
         // Chat widget
+        const CHAT_API = 'https://playmaker-icky-outgrow.ngrok-free.dev/v1/chat/completions';
+        const CHAT_KEY = 'miguela-chat-key-2026';
+
         function toggleChat() {
             document.getElementById('chatPanel').classList.toggle('open');
             if (document.getElementById('chatPanel').classList.contains('open')) {
                 document.getElementById('chatInput').focus();
             }
         }
-        function sendMsg() {
+        async function sendMsg() {
             const input = document.getElementById('chatInput');
             const msg = input.value.trim();
             if (!msg) return;
             const body = document.querySelector('.chat-body');
+            // Show user message
             const userMsg = document.createElement('div');
             userMsg.className = 'chat-msg';
             userMsg.style.cssText = 'background:var(--warm);color:#fff;align-self:flex-end;border-bottom-right-radius:4px;';
             userMsg.textContent = msg;
             body.appendChild(userMsg);
-            const themMsg = document.createElement('div');
-            themMsg.className = 'chat-msg them';
-            themMsg.textContent = 'Opening Telegram...';
-            body.appendChild(themMsg);
+            // Show typing indicator
+            const typing = document.createElement('div');
+            typing.className = 'chat-msg them';
+            typing.textContent = '...';
+            typing.id = 'typingIndicator';
+            body.appendChild(typing);
             body.scrollTop = body.scrollHeight;
             input.value = '';
-            const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
-            const url = isMobile
-                ? 'tg://resolve?domain=MiguelaChaves&text=' + encodeURIComponent(msg)
-                : 'https://t.me/MiguelaChaves?text=' + encodeURIComponent(msg);
-            setTimeout(() => { window.open(url, '_blank'); }, 600);
+            input.disabled = true;
+            try {
+                const r = await fetch(CHAT_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + CHAT_KEY },
+                    body: JSON.stringify({ model: 'hermes-agent', messages: [{ role: 'user', content: msg }] })
+                });
+                const d = await r.json();
+                const reply = d.choices?.[0]?.message?.content || 'Sorry, something went wrong. Try again?';
+                document.getElementById('typingIndicator')?.remove();
+                const themMsg = document.createElement('div');
+                themMsg.className = 'chat-msg them';
+                themMsg.textContent = reply;
+                body.appendChild(themMsg);
+            } catch(e) {
+                document.getElementById('typingIndicator')?.remove();
+                const errMsg = document.createElement('div');
+                errMsg.className = 'chat-msg them';
+                errMsg.textContent = 'Having trouble connecting. Try Telegram: t.me/MiguelaChaves';
+                body.appendChild(errMsg);
+            }
+            input.disabled = false;
+            input.focus();
+            body.scrollTop = body.scrollHeight;
         }
     </script>
 </body>
