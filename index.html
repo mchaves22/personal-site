@@ -87,7 +87,7 @@
 
         /* Header — side by side */
         header {
-            padding: 80px 0 56px;
+            padding: 140px 0 64px;
             display: flex; align-items: center; gap: 48px;
         }
         .headshot {
@@ -109,12 +109,13 @@
             object-fit: cover;
         }
         .header-text { flex: 1; min-width: 0; }
-        header h1 { font-size: 48px; font-weight: 400; letter-spacing: -0.5px; margin-bottom: 18px; line-height: 1.15; }
+        header h1 { font-size: 56px; font-weight: 400; letter-spacing: -0.5px; margin-bottom: 18px; line-height: 1.1; }
         header .tagline { font-size: 18px; color: var(--text); line-height: 1.55; margin-bottom: 14px; }
         header .personal { font-size: 15px; color: var(--muted); font-style: italic; margin-bottom: 14px; }
         header .industries { font-size: 13px; color: var(--muted); letter-spacing: 0.5px; }
 
-        section { padding: 48px 0; border-top: 1px solid var(--border); }
+        section { padding: 64px 0; }
+        section:nth-child(even) { background: var(--highlight); }
         .section-label { font-family: "Crimson Text", Georgia, serif; font-size: 24px; font-weight: 400; color: var(--text); margin-bottom: 20px; }
         section p { font-size: 16px; margin-bottom: 16px; line-height: 1.7; color: var(--text); }
         section p:last-child { margin-bottom: 0; }
@@ -219,9 +220,9 @@
         .chat-input-area button:hover { opacity: 0.9; }
 
         @media (max-width: 700px) {
-            header { flex-direction: column; text-align: center; gap: 24px; padding: 60px 0 40px; }
+            header { flex-direction: column; text-align: center; gap: 24px; padding: 100px 0 48px; }
             .headshot { width: 120px; height: 120px; }
-            header h1 { font-size: 36px; }
+            header h1 { font-size: 38px; }
             header .tagline { font-size: 16px; }
             .weather-badge { top: 12px; left: 12px; padding: 6px 10px; font-size: 12px; }
             .weather-badge .temp { font-size: 14px; }
@@ -465,13 +466,6 @@
             input.focus();
             body.scrollTop = body.scrollHeight;
         }
-    </script>
-    <!-- Lenis smooth scrolling -->
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1"></script>
-    <script>
-        const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
     </script>
     <!-- AOS (Animate On Scroll) -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
