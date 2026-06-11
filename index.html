@@ -44,7 +44,7 @@
             -webkit-font-smoothing: antialiased;
         }
         h1, h2, h3, .serif { font-family: "Crimson Text", Georgia, serif; }
-        .container { max-width: 640px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
 
         .theme-toggle {
             position: fixed; top: 24px; right: 24px;
@@ -69,23 +69,43 @@
             .progress-bar { display: none; }
         }
 
-        header { padding: 80px 0 56px; text-align: center; }
+        /* Weather badge — top left margin */
+        .weather-badge {
+            position: fixed; top: 24px; left: 24px;
+            font-size: 13px; color: var(--muted);
+            display: flex; align-items: center; gap: 8px;
+            z-index: 10;
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 24px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+        }
+        .weather-badge .temp { font-size: 16px; font-family: "Crimson Text", serif; color: var(--warm); }
+        .weather-badge .location { opacity: 0.7; }
+        .weather-badge .dot { color: var(--border); margin: 0 2px; }
+
+        /* Header — side by side */
+        header {
+            padding: 80px 0 56px;
+            display: flex; align-items: center; gap: 48px;
+        }
         .polaroids {
-            display: flex; justify-content: center; gap: 12px;
-            margin-bottom: 28px; flex-wrap: wrap;
+            display: flex; flex-direction: column; gap: 12px;
+            flex-shrink: 0;
         }
         .polaroid {
-            width: 140px;
+            width: 130px;
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 4px;
-            padding: 7px 7px 30px 7px;
+            padding: 6px 6px 26px 6px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.06);
             transition: transform 0.3s;
         }
         .polaroid:nth-child(1) { transform: rotate(-3deg); }
-        .polaroid:nth-child(2) { transform: rotate(1deg); }
-        .polaroid:nth-child(3) { transform: rotate(-1deg); }
+        .polaroid:nth-child(2) { transform: rotate(2deg); margin-left: 12px; }
+        .polaroid:nth-child(3) { transform: rotate(-1.5deg); margin-left: -8px; }
         .polaroid:hover { transform: rotate(0deg) scale(1.05) !important; z-index: 2; }
         .polaroid .photo {
             width: 100%; aspect-ratio: 1;
@@ -99,21 +119,17 @@
             width: 100%; height: 100%;
             object-fit: cover;
         }
-        header h1 { font-size: 56px; font-weight: 400; letter-spacing: -0.5px; margin-bottom: 20px; line-height: 1.1; }
-        header .tagline { font-size: 22px; color: var(--text); line-height: 1.5; max-width: 520px; margin: 0 auto 16px; }
-        header .personal { font-size: 16px; color: var(--muted); font-style: italic; margin-bottom: 20px; }
-        header .industries { font-size: 14px; color: var(--muted); letter-spacing: 0.5px; }
-        .weather-bar {
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            margin-top: 20px; font-size: 14px; color: var(--muted);
-        }
-        .weather-bar .temp { font-size: 22px; font-family: "Crimson Text", serif; color: var(--warm); }
-        .weather-bar .desc { font-style: italic; }
+        .header-text { flex: 1; min-width: 0; }
+        header h1 { font-size: 48px; font-weight: 400; letter-spacing: -0.5px; margin-bottom: 18px; line-height: 1.15; }
+        header .tagline { font-size: 18px; color: var(--text); line-height: 1.55; margin-bottom: 14px; }
+        header .personal { font-size: 15px; color: var(--muted); font-style: italic; margin-bottom: 14px; }
+        header .industries { font-size: 13px; color: var(--muted); letter-spacing: 0.5px; }
 
         section { padding: 48px 0; border-top: 1px solid var(--border); }
         .section-label { font-family: "Crimson Text", Georgia, serif; font-size: 24px; font-weight: 400; color: var(--text); margin-bottom: 20px; }
         section p { font-size: 16px; margin-bottom: 16px; line-height: 1.7; color: var(--text); }
         section p:last-child { margin-bottom: 0; }
+        .section-text { max-width: 640px; }
 
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
         .card { padding: 20px 18px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); }
@@ -213,42 +229,51 @@
         }
         .chat-input-area button:hover { opacity: 0.9; }
 
-        @media (max-width: 520px) {
-            header { padding: 48px 0 40px; }
-            header h1 { font-size: 38px; }
-            header .tagline { font-size: 18px; }
-            .polaroid { width: 130px; height: 156px; padding: 6px 6px 30px 6px; }
+        @media (max-width: 700px) {
+            header { flex-direction: column; text-align: center; gap: 28px; padding: 60px 0 40px; }
+            .polaroids { flex-direction: row; justify-content: center; }
+            .polaroid { width: 110px; padding: 5px 5px 22px 5px; }
+            .polaroid:nth-child(2) { margin-left: 0; }
+            .polaroid:nth-child(3) { margin-left: 0; }
+            header h1 { font-size: 36px; }
+            header .tagline { font-size: 16px; }
+            .weather-badge { top: 12px; left: 12px; padding: 6px 10px; font-size: 12px; }
+            .weather-badge .temp { font-size: 14px; }
             section { padding: 36px 0; }
             .grid-3 { grid-template-columns: 1fr; }
             .chat-panel { width: calc(100vw - 48px); right: 0; }
+            .container { padding: 0 20px; }
         }
     </style>
 </head>
 <body>
     <div class="progress-bar"></div>
+    <div class="weather-badge" data-aos="fade-down" data-aos-duration="500">
+        <span class="temp" id="weather-temp">--°</span>
+        <span class="desc" id="weather-desc">loading...</span>
+        <span class="dot">·</span>
+        <span class="location" id="weather-loc"></span>
+    </div>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><i class="ph ph-sun"></i></button>
 
     <div class="container">
         <header>
             <div class="polaroids">
-                <div class="polaroid" data-aos="fade-down" data-aos-duration="600">
+                <div class="polaroid" data-aos="fade-right" data-aos-duration="600">
                     <div class="photo"><img src="photo1.jpeg" alt="Miguela" onerror="this.style.display='none';this.parentElement.textContent='📷'"></div>
                 </div>
-                <div class="polaroid" data-aos="fade-down" data-aos-duration="600" data-aos-delay="100">
+                <div class="polaroid" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
                     <div class="photo"><img src="photo2.JPG" alt="Miguela" onerror="this.style.display='none';this.parentElement.textContent='📷'"></div>
                 </div>
-                <div class="polaroid" data-aos="fade-down" data-aos-duration="600" data-aos-delay="200">
+                <div class="polaroid" data-aos="fade-right" data-aos-duration="600" data-aos-delay="200">
                     <div class="photo"><img src="photo3.jpeg" alt="Miguela" onerror="this.style.display='none';this.parentElement.textContent='📷'"></div>
                 </div>
             </div>
-            <h1 data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">Hi, I'm Miguela</h1>
-            <p class="tagline" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">I'm a 0→1 product builder passionate about building things people love. My work sits at the intersection of AI, great product thinking, and real human need.</p>
-            <p class="personal" data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">Based in Denver, Colorado. I spend my free time chasing two border collies through the Rockies and taking advantage of 300+ days of sunshine.</p>
-            <p class="industries" data-aos="fade-up" data-aos-duration="600" data-aos-delay="600">SaaS &middot; Ecommerce &middot; Adtech</p>
-            <div class="weather-bar" data-aos="fade-up" data-aos-duration="600" data-aos-delay="700">
-                <span class="temp" id="weather-temp">--°</span>
-                <span class="desc" id="weather-desc">loading...</span>
-                <span style="color: var(--muted);">· Denver, CO</span>
+            <div class="header-text">
+                <h1 data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">It's great to meet you, I'm Miguela</h1>
+                <p class="tagline" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">I'm a 0→1 product builder passionate about building things people love. My work sits at the intersection of AI, great product thinking, and real human need.</p>
+                <p class="personal" data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">Based in Denver, Colorado. I spend my free time chasing two border collies through the Rockies and taking advantage of 300+ days of sunshine.</p>
+                <p class="industries" data-aos="fade-up" data-aos-duration="600" data-aos-delay="600">SaaS &middot; Ecommerce &middot; Adtech</p>
             </div>
         </header>
 
@@ -263,8 +288,10 @@
 
         <section data-aos="fade-up" data-aos-duration="700">
             <h2 class="section-label">How I work</h2>
-            <p data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">I've worked across SaaS, ecommerce, and adtech. I like being close to the problem and the people solving it. I'd rather ship something real and iterate than spend months planning something perfect that never sees the light of day.</p>
-            <p data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">Clarity is a gift you give your team. If we can't say what we're building and why in a sentence, we're not ready. The best products come from teams that trust each other enough to say when something isn't working.</p>
+            <div class="section-text">
+                <p data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">I've worked across SaaS, ecommerce, and adtech. I like being close to the problem and the people solving it. I'd rather ship something real and iterate than spend months planning something perfect that never sees the light of day.</p>
+                <p data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">Clarity is a gift you give your team. If we can't say what we're building and why in a sentence, we're not ready. The best products come from teams that trust each other enough to say when something isn't working.</p>
+            </div>
         </section>
 
         <section data-aos="fade-up" data-aos-duration="700">
@@ -325,17 +352,67 @@
             71: '🌨️', 73: '🌨️', 75: '🌨️', 77: '🌨️', 80: '🌦️', 81: '🌦️',
             82: '🌧️', 85: '🌨️', 86: '🌨️', 95: '⛈️', 96: '⛈️', 99: '⛈️'
         };
-        async function fetchWeather() {
+
+        async function fetchWeatherForCoords(lat, lon) {
+            const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&temperature_unit=fahrenheit`);
+            return await r.json();
+        }
+
+        async function reverseGeocode(lat, lon) {
             try {
-                const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=39.7392&longitude=-104.9903&current=temperature_2m,weather_code&temperature_unit=fahrenheit');
+                const r = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10`);
                 const d = await r.json();
+                const addr = d.address || {};
+                return addr.city || addr.town || addr.county || addr.state || '';
+            } catch(e) {
+                return '';
+            }
+        }
+
+        async function fetchWeather() {
+            let lat, lon, city = '';
+
+            // Try browser geolocation first
+            if (navigator.geolocation) {
+                try {
+                    const pos = await new Promise((resolve, reject) => {
+                        navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000, maximumAge: 600000 });
+                    });
+                    lat = pos.coords.latitude;
+                    lon = pos.coords.longitude;
+                    city = await reverseGeocode(lat, lon);
+                } catch(e) {
+                    // Geolocation denied or failed — fall through to IP geolocation
+                }
+            }
+
+            // Fallback: IP-based geolocation
+            if (!lat) {
+                try {
+                    const ipr = await fetch('https://ipapi.co/json/');
+                    const ipd = await ipr.json();
+                    lat = ipd.latitude;
+                    lon = ipd.longitude;
+                    city = ipd.city || '';
+                } catch(e) {
+                    // Final fallback: Denver
+                    lat = 39.7392;
+                    lon = -104.9903;
+                    city = 'Denver, CO';
+                }
+            }
+
+            try {
+                const d = await fetchWeatherForCoords(lat, lon);
                 const temp = Math.round(d.current.temperature_2m);
                 const code = d.current.weather_code;
                 document.getElementById('weather-temp').textContent = (weatherIcons[code] || '🌡️') + ' ' + temp + '°';
                 document.getElementById('weather-desc').textContent = weatherCodes[code] || '';
+                document.getElementById('weather-loc').textContent = city || '';
             } catch(e) {
                 document.getElementById('weather-temp').textContent = '☀️';
                 document.getElementById('weather-desc').textContent = '300+ sunny days a year';
+                document.getElementById('weather-loc').textContent = '';
             }
         }
         fetchWeather();
@@ -373,13 +450,11 @@
             const msg = input.value.trim();
             if (!msg) return;
             const body = document.querySelector('.chat-body');
-            // Show user message
             const userMsg = document.createElement('div');
             userMsg.className = 'chat-msg';
             userMsg.style.cssText = 'background:var(--warm);color:#fff;align-self:flex-end;border-bottom-right-radius:4px;';
             userMsg.textContent = msg;
             body.appendChild(userMsg);
-            // Show typing indicator
             const typing = document.createElement('div');
             typing.className = 'chat-msg them';
             typing.textContent = '...';
