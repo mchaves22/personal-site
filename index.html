@@ -114,13 +114,6 @@
         header .tagline { font-size: 22px; color: var(--text); line-height: 1.55; margin-bottom: 14px; max-width: 640px; margin-left: auto; margin-right: auto; }
         header .personal { font-size: 17px; color: var(--muted); font-style: italic; max-width: 640px; margin-left: auto; margin-right: auto; }
 
-        /* Squiggle decoration */
-        .squiggles {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100vh;
-            pointer-events: none; z-index: 0;
-        }
-        body { position: relative; }
-
         /* Full-width highlighted section band */
         .section-alt { background: var(--highlight); }
         .section-alt .container { padding-top: 28px; padding-bottom: 28px; }
@@ -230,19 +223,6 @@
     </div>
 
     <div class="container">
-    <!-- Squiggle decoration -->
-    <svg class="squiggles" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-            <pattern id="squiggle-pattern" x="0" y="0" width="400" height="200" patternUnits="userSpaceOnUse">
-                <path d="M0,30 C50,10 60,50 110,25 C160,0 170,55 220,20 C270,-15 280,60 330,15 C370,-20 390,50 400,30" fill="none" stroke="#c4843e" stroke-width="2.5"/>
-                <path d="M0,70 C60,50 70,90 130,65 C190,40 200,100 260,60 C320,20 330,95 390,55 C420,35 420,80 400,70" fill="none" stroke="#c4843e" stroke-width="2"/>
-                <path d="M0,110 C40,90 50,130 100,105 C150,80 160,140 210,100 C260,60 270,135 320,90 C360,55 380,120 400,110" fill="none" stroke="#c4843e" stroke-width="2"/>
-                <path d="M0,150 C70,170 80,130 140,155 C200,180 210,135 270,160 C330,185 340,140 400,165" fill="none" stroke="#c4843e" stroke-width="1.5"/>
-                <path d="M0,190 C50,175 60,210 120,190 C180,170 190,215 250,195 C310,175 320,220 380,200 C410,190 420,210 400,190" fill="none" stroke="#c4843e" stroke-width="1.5"/>
-            </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#squiggle-pattern)"/>
-    </svg>
         <header>
             <div class="headshot" data-aos="fade-down" data-aos-duration="600">
                 <img src="photo2.JPG" alt="Miguela" onerror="this.style.display='none';this.parentElement.style.background='var(--highlight)';this.parentElement.innerHTML='<span style=font-size:40px>📷</span>'">
