@@ -8,9 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- AOS (Animate On Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <style>
         :root {
@@ -44,7 +42,7 @@
             -webkit-font-smoothing: antialiased;
         }
         h1, h2, h3, .serif { font-family: "Crimson Text", Georgia, serif; }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+        .container { max-width: 920px; margin: 0 auto; padding: 0 64px; }
 
         .theme-toggle {
             position: fixed; top: 24px; right: 24px;
@@ -56,7 +54,6 @@
         }
         .theme-toggle:hover { border-color: var(--warm); }
 
-        /* Scroll progress bar */
         @keyframes progress { from { width: 0%; } to { width: 100%; } }
         .progress-bar {
             position: fixed; top: 0; left: 0; height: 3px;
@@ -69,7 +66,6 @@
             .progress-bar { display: none; }
         }
 
-        /* Weather badge — top left margin */
         .weather-badge {
             position: fixed; top: 24px; left: 24px;
             font-size: 13px; color: var(--muted);
@@ -100,23 +96,17 @@
             transition: transform 0.3s, box-shadow 0.3s;
             margin: 0 auto 28px;
         }
-        .headshot:hover {
-            transform: scale(1.04);
-            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
-            border-color: var(--warm);
-        }
-        .headshot img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-        }
+        .headshot:hover { transform: scale(1.04); box-shadow: 0 4px 24px rgba(0,0,0,0.1); border-color: var(--warm); }
+        .headshot img { width: 100%; height: 100%; object-fit: cover; }
         header h1 { font-size: 56px; font-weight: 400; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 20px; }
         header .tagline { font-size: 18px; color: var(--text); line-height: 1.55; margin-bottom: 14px; max-width: 560px; margin-left: auto; margin-right: auto; }
         header .personal { font-size: 15px; color: var(--muted); font-style: italic; max-width: 560px; margin-left: auto; margin-right: auto; }
-        .industry-badges { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
-        .industry-badge { padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border); font-size: 12px; color: var(--muted); background: var(--card); letter-spacing: 0.3px; }
+
+        /* Full-width highlighted section band */
+        .section-alt { background: var(--highlight); }
+        .section-alt .container { padding-top: 80px; padding-bottom: 80px; }
 
         section { padding: 80px 0; }
-        section:nth-child(even) { background: var(--highlight); }
         .section-label { font-family: "Crimson Text", Georgia, serif; font-size: 24px; font-weight: 400; color: var(--text); margin-bottom: 24px; }
         section p { font-size: 16px; margin-bottom: 16px; line-height: 1.7; color: var(--text); }
         section p:last-child { margin-bottom: 0; }
@@ -128,26 +118,18 @@
         .card h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--text); }
         .card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 0; }
 
-        /* Stat bar */
-        .stat-bar { display: flex; justify-content: center; gap: 48px; padding: 20px 0 0; flex-wrap: wrap; }
-        .stat { text-align: center; }
-        .stat .num { font-family: "Crimson Text", serif; font-size: 40px; color: var(--warm); line-height: 1.1; }
-        .stat .label { font-size: 12px; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; margin-top: 4px; }
-
-        .skills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .skills { display: flex; flex-wrap: wrap; gap: 8px; }
         .skill { padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); font-size: 13px; color: var(--text); background: var(--card); }
 
-        .contact-links { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; justify-content: center; }
+        .contact-links { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
         .contact-links a { color: var(--text); text-decoration: none; font-size: 15px; font-weight: 500; border-bottom: 1.5px solid var(--border); padding-bottom: 3px; transition: border-color 0.2s; }
         .contact-links a:hover { border-color: var(--warm); }
 
         footer { padding: 40px 0 80px; text-align: center; font-size: 13px; color: var(--muted); }
 
-        /* Chat widget */
         .chat-widget { position: fixed; right: 24px; bottom: 24px; z-index: 100; font-family: "Inter", sans-serif; }
         .chat-bubble {
-            width: 56px; height: 56px;
-            border-radius: 50%;
+            width: 56px; height: 56px; border-radius: 50%;
             background: var(--warm); color: #fff;
             border: none; cursor: pointer;
             font-size: 24px;
@@ -168,58 +150,23 @@
             flex-direction: column;
         }
         .chat-panel.open { display: flex; }
-        .chat-header {
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border);
-            display: flex; align-items: center; gap: 12px;
-        }
-        .chat-avatar {
-            width: 40px; height: 40px; border-radius: 50%;
-            background: var(--highlight);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 20px;
-        }
+        .chat-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+        .chat-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--highlight); display: flex; align-items: center; justify-content: center; font-size: 20px; }
         .chat-header-text h4 { font-size: 15px; font-weight: 600; }
         .chat-header-text p { font-size: 12px; color: var(--muted); margin: 0; }
-        .chat-body {
-            padding: 16px 20px;
-            flex: 1;
-            display: flex; flex-direction: column; gap: 12px;
-        }
-        .chat-msg {
-            padding: 10px 14px;
-            border-radius: 14px;
-            font-size: 14px;
-            line-height: 1.5;
-            max-width: 85%;
-        }
-        .chat-msg.them {
-            background: var(--highlight);
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-        }
-        .chat-input-area {
-            padding: 12px 16px;
-            border-top: 1px solid var(--border);
-            display: flex; gap: 8px;
-        }
+        .chat-body { padding: 16px 20px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+        .chat-msg { padding: 10px 14px; border-radius: 14px; font-size: 14px; line-height: 1.5; max-width: 85%; }
+        .chat-msg.them { background: var(--highlight); align-self: flex-start; border-bottom-left-radius: 4px; }
+        .chat-input-area { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
         .chat-input-area input {
-            flex: 1;
-            padding: 10px 14px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            font-size: 14px;
-            font-family: "Inter", sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            outline: none;
+            flex: 1; padding: 10px 14px; border: 1px solid var(--border); border-radius: 20px;
+            font-size: 14px; font-family: "Inter", sans-serif;
+            background: var(--bg); color: var(--text); outline: none;
         }
         .chat-input-area input:focus { border-color: var(--warm); }
         .chat-input-area button {
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            background: var(--warm); color: #fff;
-            border: none; cursor: pointer;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--warm); color: #fff; border: none; cursor: pointer;
             font-size: 18px;
             display: flex; align-items: center; justify-content: center;
             transition: background 0.2s;
@@ -233,7 +180,8 @@
             header .tagline { font-size: 16px; }
             .weather-badge { top: 12px; left: 12px; padding: 6px 10px; font-size: 12px; }
             .weather-badge .temp { font-size: 14px; }
-            section { padding: 36px 0; }
+            section { padding: 48px 0; }
+            .section-alt .container { padding-top: 48px; padding-bottom: 48px; }
             .grid-3 { grid-template-columns: 1fr; }
             .chat-panel { width: calc(100vw - 48px); right: 0; }
             .container { padding: 0 24px; }
@@ -258,25 +206,23 @@
             <h1 data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">It's great to meet you, I'm Miguela</h1>
             <p class="tagline" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">I'm a 0→1 product builder passionate about building things people love. My work sits at the intersection of AI, great product thinking, and real human need.</p>
             <p class="personal" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">Based in Denver, Colorado. I spend my free time chasing two border collies through the Rockies and taking advantage of 300+ days of sunshine.</p>
-            <div class="industry-badges" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
-                <span class="industry-badge">SaaS</span><span class="industry-badge">Ecommerce</span><span class="industry-badge">Adtech</span>
-            </div>
-            <div class="stat-bar" data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">
-                <div class="stat"><div class="num">3</div><div class="label">Industries</div></div>
-                <div class="stat"><div class="num">0→1</div><div class="label">Builder</div></div>
-                <div class="stat"><div class="num">10+</div><div class="label">Products Shipped</div></div>
-            </div>
         </header>
+    </div>
 
-        <section data-aos="fade-up" data-aos-duration="700">
-            <h2 class="section-label">What I bring</h2>
-            <div class="grid-3">
-                <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="0"><div class="num">01</div><h3>Builder's instinct</h3><p>Founded and ran a business from the ground up. I know the difference between a good idea and one that actually works.</p></div>
-                <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150"><div class="num">02</div><h3>People-first</h3><p>Spent years solving problems face-to-face. Every product decision starts with the person on the other side.</p></div>
-                <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300"><div class="num">03</div><h3>Forward-looking</h3><p>I pay attention to what's next. AI is changing how products get built, and I'm here for the real work, not the hype.</p></div>
-            </div>
-        </section>
+    <div class="section-alt">
+        <div class="container">
+            <section data-aos="fade-up" data-aos-duration="700">
+                <h2 class="section-label">What I bring</h2>
+                <div class="grid-3">
+                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="0"><div class="num">01</div><h3>Builder's instinct</h3><p>Founded and ran a business from the ground up. I know the difference between a good idea and one that actually works.</p></div>
+                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150"><div class="num">02</div><h3>People-first</h3><p>Spent years solving problems face-to-face. Every product decision starts with the person on the other side.</p></div>
+                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300"><div class="num">03</div><h3>Forward-looking</h3><p>I pay attention to what's next. AI is changing how products get built, and I'm here for the real work, not the hype.</p></div>
+                </div>
+            </section>
+        </div>
+    </div>
 
+    <div class="container">
         <section data-aos="fade-up" data-aos-duration="700">
             <h2 class="section-label">How I work</h2>
             <div class="section-text">
@@ -284,17 +230,23 @@
                 <p data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">Clarity is a gift you give your team. If we can't say what we're building and why in a sentence, we're not ready. The best products come from teams that trust each other enough to say when something isn't working.</p>
             </div>
         </section>
+    </div>
 
-        <section data-aos="fade-up" data-aos-duration="700">
-            <h2 class="section-label">What I can help with</h2>
-            <div class="skills">
-                <span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="0">Product strategy</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="50">User research</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="100">Roadmapping</span>
-                <span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="150">Prioritization</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="200">Go-to-market</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="250">Wireframing</span>
-                <span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="300">Prototyping</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="350">Agile &amp; lean</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="400">Cross-functional teams</span>
-                <span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="450">Stakeholder alignment</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="500">Data &amp; analytics</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="550">Technical communication</span>
-            </div>
-        </section>
+    <div class="section-alt">
+        <div class="container">
+            <section data-aos="fade-up" data-aos-duration="700">
+                <h2 class="section-label">What I can help with</h2>
+                <div class="skills">
+                    <span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="0">Product strategy</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="50">User research</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="100">Roadmapping</span>
+                    <span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="150">Prioritization</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="200">Go-to-market</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="250">Wireframing</span>
+                    <span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="300">Prototyping</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="350">Agile &amp; lean</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="400">Cross-functional teams</span>
+                    <span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="450">Stakeholder alignment</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="500">Data &amp; analytics</span><span class="skill" data-aos="fade-up" data-aos-duration="400" data-aos-delay="550">Technical communication</span>
+                </div>
+            </section>
+        </div>
+    </div>
 
+    <div class="container">
         <section data-aos="fade-up" data-aos-duration="700">
             <h2 class="section-label">Say hello</h2>
             <div class="contact-links">
@@ -305,7 +257,6 @@
         </section>
     </div>
 
-    <!-- Chat widget -->
     <div class="chat-widget">
         <button class="chat-bubble" onclick="toggleChat()" aria-label="Open chat"><i class="ph ph-chats-circle"></i></button>
         <div class="chat-panel" id="chatPanel">
@@ -355,15 +306,11 @@
                 const d = await r.json();
                 const addr = d.address || {};
                 return addr.city || addr.town || addr.county || addr.state || '';
-            } catch(e) {
-                return '';
-            }
+            } catch(e) { return ''; }
         }
 
         async function fetchWeather() {
             let lat, lon, city = '';
-
-            // Try browser geolocation first
             if (navigator.geolocation) {
                 try {
                     const pos = await new Promise((resolve, reject) => {
@@ -372,12 +319,8 @@
                     lat = pos.coords.latitude;
                     lon = pos.coords.longitude;
                     city = await reverseGeocode(lat, lon);
-                } catch(e) {
-                    // Geolocation denied or failed — fall through to IP geolocation
-                }
+                } catch(e) {}
             }
-
-            // Fallback: IP-based geolocation
             if (!lat) {
                 try {
                     const ipr = await fetch('https://ipapi.co/json/');
@@ -386,13 +329,9 @@
                     lon = ipd.longitude;
                     city = ipd.city || '';
                 } catch(e) {
-                    // Final fallback: Denver
-                    lat = 39.7392;
-                    lon = -104.9903;
-                    city = 'Denver, CO';
+                    lat = 39.7392; lon = -104.9903; city = 'Denver, CO';
                 }
             }
-
             try {
                 const d = await fetchWeatherForCoords(lat, lon);
                 const temp = Math.round(d.current.temperature_2m);
@@ -426,7 +365,6 @@
             document.querySelector('.theme-toggle i').className = 'ph ph-moon';
         }
 
-        // Chat widget
         const CHAT_API = 'https://playmaker-icky-outgrow.ngrok-free.dev/v1/chat/completions';
         const CHAT_KEY = 'miguela-chat-key-2026';
 
@@ -479,7 +417,6 @@
             body.scrollTop = body.scrollHeight;
         }
     </script>
-    <!-- AOS (Animate On Scroll) -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init({ duration: 800, once: true, offset: 50 });</script>
 </body>
