@@ -115,21 +115,21 @@
 
         section { padding: 80px 0; }
         section:nth-child(even) { background: var(--highlight); }
-        .section-label { font-family: "Crimson Text", Georgia, serif; font-size: 24px; font-weight: 400; color: var(--text); margin-bottom: 24px; }
+        .section-label { font-family: "Crimson Text", Georgia, serif; font-size: 24px; font-weight: 400; color: var(--text); margin-bottom: 24px; text-align: center; }
         section p { font-size: 16px; margin-bottom: 16px; line-height: 1.7; color: var(--text); }
         section p:last-child { margin-bottom: 0; }
-        .section-text { max-width: 640px; }
+        .section-text { max-width: 600px; margin: 0 auto; }
 
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 720px; margin: 0 auto; }
         .card { padding: 20px 18px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); }
         .card .num { font-family: "Crimson Text", serif; font-size: 28px; color: var(--warm); margin-bottom: 6px; line-height: 1; }
         .card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
         .card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 0; }
 
-        .skills { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skills { display: flex; flex-wrap: wrap; gap: 8px; max-width: 680px; margin: 0 auto; justify-content: center; }
         .skill { padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); font-size: 13px; color: var(--text); background: var(--card); }
 
-        .contact-links { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+        .contact-links { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; justify-content: center; }
         .contact-links a { color: var(--text); text-decoration: none; font-size: 15px; font-weight: 500; border-bottom: 1.5px solid var(--border); padding-bottom: 3px; transition: border-color 0.2s; }
         .contact-links a:hover { border-color: var(--warm); }
 
