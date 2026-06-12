@@ -134,17 +134,39 @@
         section p:last-child { margin-bottom: 0; }
         .section-text { max-width: 720px; }
 
-        .grid-3 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin: 0 -48px; overflow: visible; }
-        .grid-3 .card:last-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - 12px); }
-        .card { padding: 22px 32px; border: 1px solid var(--warm); border-radius: 8px; background: var(--card); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s; overflow: hidden; position: relative; }
+        .grid-3 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin: 0 -48px; overflow: visible; }
+        .grid-3 .card:last-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - 16px); }
+        .card {
+            padding: 22px 32px; border: 1px solid var(--warm); border-radius: 8px;
+            background: var(--card); position: relative;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+            transform-origin: center bottom;
+            will-change: transform;
+        }
+        .card::before,
         .card::after {
             content: ""; position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 50% 0%, rgba(196,132,62,0.12) 0%, transparent 70%);
-            opacity: 0; transition: opacity 0.3s;
+            border-radius: 8px;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: 50% 100%;
+            will-change: transform;
+        }
+        .card::before { background: rgba(196,132,62,0.20); z-index: -1; }
+        .card::after { background: rgba(196,132,62,0.10); z-index: -2; }
+        /* Warm inner glow */
+        .card .card-glow {
+            position: absolute; inset: 0; border-radius: 8px; overflow: hidden; z-index: 0;
             pointer-events: none;
         }
-        .card:hover { transform: scale(1.06); box-shadow: 0 12px 40px rgba(0,0,0,0.1); z-index: 2; }
-        .card:hover::after { opacity: 1; }
+        .card .card-glow::before {
+            content: ""; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(196,132,62,0.3) 0%, transparent 70%);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .card:hover { transform: translate(4px, -2px) rotate(3deg); box-shadow: 0 16px 48px rgba(0,0,0,0.12); z-index: 2; }
+        .card:hover::before { transform: translate(-4px, 0) rotate(-3deg); }
+        .card:hover::after { transform: translate(-8px, 0) rotate(-6deg); }
+        .card:hover .card-glow::before { opacity: 1; }
         .card-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; position: relative; z-index: 1; }
         .card .num { font-family: "Crimson Text", serif; font-size: 24px; color: var(--warm); opacity: 0.6; line-height: 1; }
         .card h3 { font-size: 22px; font-weight: 700; color: var(--warm); }
@@ -256,9 +278,9 @@
             <section data-aos="fade-up" data-aos-duration="700">
                 <h2 class="section-label">What I bring</h2>
                 <div class="grid-3">
-                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="0"><div class="card-header"><span class="num">01</span><h3>Builder instinct</h3></div><p>Founded and ran a business from the ground up. I know the difference between a good idea and one that actually works.</p></div>
-                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150"><div class="card-header"><span class="num">02</span><h3>People-first</h3></div><p>Spent years solving problems face-to-face. Every product decision starts with the person on the other side.</p></div>
-                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300"><div class="card-header"><span class="num">03</span><h3>Forward-looking</h3></div><p>I pay attention to what's next. AI is changing how products get built, and I'm here to get ahead of the hype.</p></div>
+                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="0"><div class="card-glow"></div><div class="card-header"><span class="num">01</span><h3>Builder instinct</h3></div><p>Founded and ran a business from the ground up. I know the difference between a good idea and one that actually works.</p></div>
+                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150"><div class="card-glow"></div><div class="card-header"><span class="num">02</span><h3>People-first</h3></div><p>Spent years solving problems face-to-face. Every product decision starts with the person on the other side.</p></div>
+                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300"><div class="card-glow"></div><div class="card-header"><span class="num">03</span><h3>Forward-looking</h3></div><p>I pay attention to what's next. AI is changing how products get built, and I'm here to get ahead of the hype.</p></div>
                 </div>
             </section>
         </div>
