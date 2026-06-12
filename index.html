@@ -137,11 +137,14 @@
         .grid-3 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin: 0 -48px; overflow: visible; }
         .grid-3 .card:last-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - 16px); }
         .card {
-            padding: 22px 32px; border: 1px solid var(--warm); border-radius: 8px;
-            background: var(--card); position: relative; z-index: 0;
+            position: relative; z-index: 0;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
             transform-origin: center bottom;
             will-change: transform;
+        }
+        .card-inner {
+            padding: 22px 32px; border: 1px solid var(--warm); border-radius: 8px;
+            background: var(--card); position: relative; z-index: 1;
         }
         .card::before,
         .card::after {
@@ -278,9 +281,9 @@
             <section data-aos="fade-up" data-aos-duration="700">
                 <h2 class="section-label">What I bring</h2>
                 <div class="grid-3">
-                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="0"><div class="card-glow"></div><div class="card-header"><span class="num">01</span><h3>Builder instinct</h3></div><p>Founded and ran a business from the ground up. I know the difference between a good idea and one that actually works.</p></div>
-                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150"><div class="card-glow"></div><div class="card-header"><span class="num">02</span><h3>People-first</h3></div><p>Spent years solving problems face-to-face. Every product decision starts with the person on the other side.</p></div>
-                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300"><div class="card-glow"></div><div class="card-header"><span class="num">03</span><h3>Forward-looking</h3></div><p>I pay attention to what's next. AI is changing how products get built, and I'm here to get ahead of the hype.</p></div>
+                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="0"><div class="card-inner"><div class="card-glow"></div><div class="card-header"><span class="num">01</span><h3>Builder instinct</h3></div><p>Founded and ran a business from the ground up. I know the difference between a good idea and one that actually works.</p></div></div>
+                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150"><div class="card-inner"><div class="card-glow"></div><div class="card-header"><span class="num">02</span><h3>People-first</h3></div><p>Spent years solving problems face-to-face. Every product decision starts with the person on the other side.</p></div></div>
+                    <div class="card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300"><div class="card-inner"><div class="card-glow"></div><div class="card-header"><span class="num">03</span><h3>Forward-looking</h3></div><p>I pay attention to what's next. AI is changing how products get built, and I'm here to get ahead of the hype.</p></div></div>
                 </div>
             </section>
         </div>
